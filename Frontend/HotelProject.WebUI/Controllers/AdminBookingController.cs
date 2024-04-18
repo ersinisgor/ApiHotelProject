@@ -25,8 +25,8 @@ namespace HotelProject.WebUI.Controllers
 			if (responseMessage.IsSuccessStatusCode)
 			{
 				var jsonData = await responseMessage.Content.ReadAsStringAsync();
-				var values = JsonConvert.DeserializeObject<List<ResultBookingDto>>(jsonData);
-				return View(values);
+				var value = JsonConvert.DeserializeObject<List<ResultBookingDto>>(jsonData);
+				return View(value);
 			}
 
 			return View();
@@ -34,11 +34,10 @@ namespace HotelProject.WebUI.Controllers
 
 		public async Task<IActionResult> ApprovedReservation(ApprovedReservationDto approvedReservationDto)
 		{
-		approvedReservationDto.Status = "Approved";
 			var client = _httpClientFactory.CreateClient();
 			var jsonData = JsonConvert.SerializeObject(approvedReservationDto);
 			StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-			var responseMessage = await client.PutAsync("http://localhost:11888/api/Booking/", stringContent);
+			var responseMessage = await client.PutAsync("http://localhost:11888/api/Booking/bbbb/", stringContent);
 			if (responseMessage.IsSuccessStatusCode)
 			{
 				return RedirectToAction("Index");
