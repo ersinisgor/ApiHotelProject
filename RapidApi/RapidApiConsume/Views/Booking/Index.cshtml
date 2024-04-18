@@ -1,0 +1,36 @@
+﻿@model List<RapidApiConsume.Models.BookingApiViewModel.Hotel>
+
+@{
+	Layout = null;
+	int count = 0;
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+<div class="container">
+	<br /><br />
+	<table class="table table-bordered">
+		<tr>
+			<th>#</th>
+			<th>Hotel Name</th>
+			<th>Hotel Rate</th>
+			<th>Hotel Details</th>
+		</tr>
+		@foreach (var item in Model)
+		{
+			count++;
+
+				<tr>
+					<th>@count</th>
+					<td>@item.property.name</td>
+					<td>@item.property.reviewScore</td>
+					<td><a href="#" class="btn btn-outline-dark">Details</a></td>
+
+				</tr>
+		
+		}
+	</table>
+</div>
+
+
