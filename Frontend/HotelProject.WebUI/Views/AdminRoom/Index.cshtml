@@ -1,0 +1,35 @@
+﻿@model List<HotelProject.WebUI.Dtos.RoomDto.ResultRoomDto>
+
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+	int count = 0;
+}
+
+@* Admin Room Index Page *@
+
+<table class="table table-bordered">
+	<tr>
+		<th>#</th>
+		<th>Room Number</th>
+		<th>Title</th>
+		<th>Delete</th>
+		<th>Edit</th>
+	</tr>
+	@foreach (var item in Model)
+	{
+		count++;
+		<tr>
+			<th>@count</th>
+			<td>@item.RoomNumber</td>
+			<td>@item.Title</td>
+			<td><a href="/AdminRoom/DeleteRoom/@item.RoomID" class="btn mb-1 btn-rounded btn-outline-danger">Delete</a></td>
+			<td><a href="/AdminRoom/UpdateRoom/@item.RoomID" class="btn mb-1 btn-rounded btn-outline-success">Edit</a></td>
+			<td><a href="#" class="btn mb-1 btn-rounded btn-outline-dark">Details</a></td>
+		</tr>
+	}
+</table>
+<a href="/AdminRoom/AddRoom/" class="btn mb-1 btn-rounded btn-outline-info">Add New Room</a>
+
+
+
