@@ -1,5 +1,6 @@
 ﻿using HotelProject.WebUI.Dtos.ContactDto;
 using HotelProject.WebUI.Dtos.SendMessageDto;
+using HotelProject.WebUI.Models.Staff;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
@@ -80,6 +81,34 @@ namespace HotelProject.WebUI.Controllers
 		public PartialViewResult SideBarAdminContactCategoryPartial()
 		{
 			return PartialView();
+		}
+
+		public async Task<IActionResult> MessageDetailsBySendbox(int id)
+		{
+      var client = _httpClientFactory.CreateClient();
+      var responseMessage = await client.GetAsync($"http://localhost:11888/api/SendMessage/{id}");
+      if (responseMessage.IsSuccessStatusCode)
+      {
+        var jsonData = await responseMessage.Content.ReadAsStringAsync();
+        var values = JsonConvert.DeserializeObject<GetMessageByIdDto>(jsonData);
+        return View(values);
+      }
+
+      return View();
+    }
+
+		public async Task<IActionResult> MessageDetailsByInbox(int id)
+		{
+			var client = _httpClientFactory.CreateClient();
+			var responseMessage = await client.GetAsync($"http://localhost:11888/api/Contact/{id}");
+			if (responseMessage.IsSuccessStatusCode)
+			{
+				var jsonData = await responseMessage.Content.ReadAsStringAsync();
+				var values = JsonConvert.DeserializeObject<InboxContactDto>(jsonData);
+				return View(values);
+			}
+
+			return View();
 		}
 	}
 }
