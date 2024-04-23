@@ -1,0 +1,25 @@
+﻿@model HotelProject.WebUI.Models.Mail.AdminMailViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+@* Admin Mail Index Page *@
+
+<form method="post">
+  <label>Receiver Email</label>
+  <input type="text" class="form-control" asp-for="ReceiverMail" required/>
+  <span class="text-danger" asp-validation-for="ReceiverMail"></span>
+  <br />
+  <label>Subject</label>
+  <input type="text" class="form-control" asp-for="Subject" required />
+  <span class="text-danger" asp-validation-for="Subject"></span>
+  <br />
+  <label>Message</label>
+  <textarea type="text" class="form-control h-150px" rows="6" asp-for="Body" id="comment" required></textarea>
+  <span class="text-danger" asp-validation-for="Body"></span>
+  <br />
+  <button class="btn btn-primary">Send Mail</button>
+</form>
+
