@@ -18,7 +18,7 @@ namespace WebApiJwt.Models
 							issuer: "https://localhost",
 							audience: "https://localhost",
 							notBefore: DateTime.Now,
-							expires: DateTime.Now.AddSeconds(20),
+							expires: DateTime.Now.AddMinutes(10),
 							signingCredentials: signingCredentials
 							);
 
@@ -43,7 +43,7 @@ namespace WebApiJwt.Models
 										issuer: "https://localhost",
 										audience: "https://localhost",
 										notBefore: DateTime.Now,
-										expires: DateTime.Now.AddSeconds(20),
+										expires: DateTime.Now.AddMinutes(20),
 										signingCredentials: signingCredentials,
 										claims: claims
 										);
