@@ -11,7 +11,7 @@ namespace HotelProject.WebUI.Controllers
 {
 	[AllowAnonymous]
 	public class RegisterController : Controller
-  {
+	{
 		private readonly UserManager<AppUser> _userManager;
 
 		public RegisterController(UserManager<AppUser> userManager)
@@ -20,36 +20,41 @@ namespace HotelProject.WebUI.Controllers
 		}
 
 		[HttpGet]
-    public IActionResult Index()
-    {
-      return View();
-    }
+		public IActionResult Index()
+		{
+			return View();
+		}
 
-    [HttpPost]
-    public async Task<IActionResult> Index(CreateNewUserDto createNewUserDto)
-    {
-      //if (ModelState.IsValid)
-      //  return View();
+		[HttpPost]
+		public async Task<IActionResult> Index(CreateNewUserDto createNewUserDto)
+		{
+			//if (ModelState.IsValid)
+			//  return View();
 
-      var appUser = new AppUser()
-      {
-        Name = createNewUserDto.Name,
-        Surname = createNewUserDto.Surname,
-        UserName = createNewUserDto.UserName,
-        Email = createNewUserDto.Mail
-      };
+			var appUser = new AppUser()
+			{
+				Name = createNewUserDto.Name,
+				Surname = createNewUserDto.Surname,
+				UserName = createNewUserDto.UserName,
+				Email = createNewUserDto.Mail,
+				City = "Istanbul",
+				ImageUrl = string.Empty,
+				WorkDepartment = string.Empty,
+				//WorkLocationID = createNewUserDto.WorkLocationID
+				WorkLocationID = 1,
+			};
 
-      var result = await _userManager.CreateAsync(appUser, createNewUserDto.Password);
+			var result = await _userManager.CreateAsync(appUser, createNewUserDto.Password);
 
 
 			if (result.Succeeded)
-      {
-        return RedirectToAction("Index", "Login");
-      }
+			{
+				return RedirectToAction("Index", "Login");
+			}
 
 
 			return View();
-    }
+		}
 
-  }
+	}
 }
