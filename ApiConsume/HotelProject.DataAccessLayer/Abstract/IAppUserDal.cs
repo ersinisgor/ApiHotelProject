@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace HotelProject.DataAccessLayer.Abstract
 {
-	public interface IAppUserDal : IGenericDal<AppUser>
-	{
-		List<AppUser> UserListWithWorkLocation();
-	}
+  public interface IAppUserDal : IGenericDal<AppUser>
+  {
+    List<AppUser> UserListWithWorkLocation();
+    int GetAppUserCount();
+
+  }
 }
