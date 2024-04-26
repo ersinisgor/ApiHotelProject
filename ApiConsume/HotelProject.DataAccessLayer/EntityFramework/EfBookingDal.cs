@@ -31,5 +31,12 @@ namespace HotelProject.DataAccessLayer.EntityFramework
 			values.Status = "Approved";
 			context.SaveChanges();
 		}
+
+		public int GetBookingCount()
+    {
+      var context = new Context();
+      var values = context.Bookings.Count();
+      return values;
+    }
 	}
 }
