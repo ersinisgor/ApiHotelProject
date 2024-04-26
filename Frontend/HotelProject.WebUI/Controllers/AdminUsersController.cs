@@ -16,7 +16,15 @@ namespace HotelProject.WebUI.Controllers
 
 		public IActionResult Index()
 		{
-			var users = _userManager.Users.ToList();
+			var users = _userManager.Users.Select(x => new AppUser
+						{
+				Name = x.Name,
+				Surname = x.Surname,
+				City = x.City,
+				ImageUrl = x.ImageUrl,
+				WorkLocationID = x.WorkLocationID,
+				WorkLocation = x.WorkLocation
+			}).ToList();
 			return View(users);
 		}
 	}

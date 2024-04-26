@@ -14,6 +14,7 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace HotelProject.WebApi
@@ -68,6 +69,9 @@ namespace HotelProject.WebApi
 			services.AddScoped<IWorkLocationDal, EfWorkLocationDal>();
 			services.AddScoped<IWorkLocationService, WorkLocationManager>();
 
+			services.AddScoped<IAppUserDal, EfAppUserDal>();
+			services.AddScoped<IAppUserService, AppUserManager>();
+
 			services.AddAutoMapper(typeof(Startup));
 
 			services.AddCors(options =>
@@ -78,7 +82,12 @@ namespace HotelProject.WebApi
 
 
 
-			services.AddControllers();
+			services.AddControllers().AddNewtonsoftJson(options =>
+							options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+										);
+			//services.AddControllers();
+			//	services.AddControllers().AddJsonOptions(x =>
+			//x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
 			services.AddSwaggerGen(c =>
 			{
 				c.SwaggerDoc("v1", new OpenApiInfo { Title = "HotelProject.WebApi", Version = "v1" });
