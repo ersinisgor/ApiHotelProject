@@ -9,29 +9,34 @@ using System.Threading.Tasks;
 
 namespace HotelProject.BusinessLayer.Concrete
 {
-	public class StaffManager : IStaffService
-	{
-		private readonly IStaffDal _staffDal;
+  public class StaffManager : IStaffService
+  {
+    private readonly IStaffDal _staffDal;
 
-		public StaffManager(IStaffDal staffDal)
-		{
-			_staffDal = staffDal;
-		}
+    public StaffManager(IStaffDal staffDal)
+    {
+      _staffDal = staffDal;
+    }
 
-		public void TDelete(Staff t)
-		{
-			_staffDal.Delete(t);
-		}
+    public void TDelete(Staff t)
+    {
+      _staffDal.Delete(t);
+    }
 
-		public Staff TGetByID(int id)
-		{
-			return _staffDal.GetByID(id);
-		}
+    public Staff TGetByID(int id)
+    {
+      return _staffDal.GetByID(id);
+    }
 
-		public List<Staff> TGetList()
-		{
-			return _staffDal.GetList();
-		}
+		public List<Staff> TGetLast4Staff()
+    {
+      return _staffDal.GetLast4Staff();
+    }
+
+    public List<Staff> TGetList()
+    {
+      return _staffDal.GetList();
+    }
 
     public int TGetStaffCount()
     {
@@ -39,13 +44,13 @@ namespace HotelProject.BusinessLayer.Concrete
     }
 
     public void TInsert(Staff t)
-		{
-			_staffDal.Insert(t);
-		}
+    {
+      _staffDal.Insert(t);
+    }
 
-		public void TUpdate(Staff t)
-		{
-			_staffDal.Update(t);
-		}
-	}
+    public void TUpdate(Staff t)
+    {
+      _staffDal.Update(t);
+    }
+  }
 }

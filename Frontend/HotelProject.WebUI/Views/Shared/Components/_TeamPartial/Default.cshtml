@@ -8,8 +8,13 @@
 		</div>
 		<div class="row g-4">
 
+			@{
+				int count = 0;
+			}
 			@foreach (var item in Model)
 			{
+				if (count >= 4) break;
+
 				<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
 					<div class="rounded shadow overflow-hidden">
 						<div class="position-relative">
@@ -26,6 +31,8 @@
 						</div>
 					</div>
 				</div>
+
+				count++;
 			}
 
 		</div>
