@@ -16,30 +16,6 @@ namespace HotelProject.DataAccessLayer.EntityFramework
 		{
 		}
 
-		public void BookingStatusChangeApproved(Booking booking)
-		{
-			var context = new Context();
-			var values = context.Bookings.Where(x => x.BookingID == booking.BookingID).FirstOrDefault();
-			values.Status = "Approved";
-			context.SaveChanges();
-		}
-
-		public void BookingStatusChangeApproved2(int id)
-		{
-			var context = new Context();
-			var values = context.Bookings.Find(id);
-			values.Status = "Approved";
-			context.SaveChanges();
-		}
-
-		public void BookingStatusChangeApproved3(int id)
-		{
-			var context = new Context();
-			var values = context.Bookings.Find(id);
-			values.Status = "Approved";
-			context.SaveChanges();
-		}
-
 		public int GetBookingCount()
 		{
 			var context = new Context();
@@ -52,7 +28,38 @@ namespace HotelProject.DataAccessLayer.EntityFramework
 			var context = new Context();
 			var values = context.Bookings.OrderByDescending(x => x.BookingID).Take(6).ToList();
 			return values;
+		}
 
+		public void MarkBookingStatusAsApproved(int id)
+		{
+			var context = new Context();
+			var values = context.Bookings.Find(id);
+			values.Status = "Approved";
+			context.SaveChanges();
+		}
+
+		public void MarkBookingStatusAsCancelled(int id)
+		{
+			var context = new Context();
+			var values = context.Bookings.Find(id);
+			values.Status = "Cancelled";
+			context.SaveChanges();
+		}
+
+		public void MarkBookingStatusAsPending(int id)
+		{
+			var context = new Context();
+			var values = context.Bookings.Find(id);
+			values.Status = "Awaiting approval";
+			context.SaveChanges();
+		}
+
+		public void MarkBookingStatusAsCallCustomer(int id)
+		{
+			var context = new Context();
+			var values = context.Bookings.Find(id);
+			values.Status = "Customer will be called";
+			context.SaveChanges();
 		}
 	}
 }

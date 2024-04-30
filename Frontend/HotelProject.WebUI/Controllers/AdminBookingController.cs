@@ -32,10 +32,10 @@ namespace HotelProject.WebUI.Controllers
 			return View();
 		}
 
-		public async Task<IActionResult> ApprovedReservation2(int id)
+		public async Task<IActionResult> ChangeBookingStatusToApproved(int id)
 		{
 			var client = _httpClientFactory.CreateClient();
-			var responseMessage = await client.GetAsync($"http://localhost:11888/api/Booking/BookingApproved/?id={id}");
+			var responseMessage = await client.GetAsync($"http://localhost:11888/api/Booking/BookingApprove/?id={id}");
 			if (responseMessage.IsSuccessStatusCode)
 			{
 				return RedirectToAction("Index");
@@ -43,21 +43,38 @@ namespace HotelProject.WebUI.Controllers
 			return View();
 		}
 
-
-
-
-
-		public async Task<IActionResult> ApprovedReservation(ApprovedReservationDto approvedReservationDto)
+		public async Task<IActionResult> ChangeBookingStatusToCancelled(int id)
 		{
 			var client = _httpClientFactory.CreateClient();
-			var jsonData = JsonConvert.SerializeObject(approvedReservationDto);
-			StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-			var responseMessage = await client.PutAsync("http://localhost:11888/api/Booking/bbbb/", stringContent);
+			var responseMessage = await client.GetAsync($"http://localhost:11888/api/Booking/BookingCancel/?id={id}");
 			if (responseMessage.IsSuccessStatusCode)
 			{
 				return RedirectToAction("Index");
 			}
 			return View();
 		}
+
+		public async Task<IActionResult> ChangeBookingStatusToPending(int id)
+		{
+			var client = _httpClientFactory.CreateClient();
+			var responseMessage = await client.GetAsync($"http://localhost:11888/api/Booking/BookingPending/?id={id}");
+			if (responseMessage.IsSuccessStatusCode)
+			{
+				return RedirectToAction("Index");
+			}
+			return View();
+		}
+
+		public async Task<IActionResult> ChangeBookingStatusToCallCustomer(int id)
+		{
+			var client = _httpClientFactory.CreateClient();
+			var responseMessage = await client.GetAsync($"http://localhost:11888/api/Booking/BookingCallCustomer/?id={id}");
+			if (responseMessage.IsSuccessStatusCode)
+			{
+				return RedirectToAction("Index");
+			}
+			return View();
+		}
+
 	}
 }

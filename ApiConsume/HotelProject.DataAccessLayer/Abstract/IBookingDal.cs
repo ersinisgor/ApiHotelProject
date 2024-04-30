@@ -9,11 +9,12 @@ namespace HotelProject.DataAccessLayer.Abstract
 {
   public interface IBookingDal : IGenericDal<Booking>
   {
-    void BookingStatusChangeApproved(Booking booking);
-    void BookingStatusChangeApproved2(int id);
     int GetBookingCount();
     List<Booking> GetLast6Bookings();
 
-		void BookingStatusChangeApproved3(int id);
+		void MarkBookingStatusAsApproved(int id);
+    void MarkBookingStatusAsCancelled(int id);
+    void MarkBookingStatusAsPending(int id);
+    void MarkBookingStatusAsCallCustomer(int id);
 	}
 }

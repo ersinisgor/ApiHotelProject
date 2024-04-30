@@ -18,22 +18,6 @@ namespace HotelProject.BusinessLayer.Concrete
 			_bookingDal = bookingDal;
 		}
 
-		public void TBookingStatusChangeApproved(Booking booking)
-		{
-			_bookingDal.BookingStatusChangeApproved(booking);
-		}
-
-		public void TBookingStatusChangeApproved2(int id)
-		{
-			_bookingDal.BookingStatusChangeApproved2(id);
-		}
-
-		public void TBookingStatusChangeApproved3(int id)
-		{
-			_bookingDal.BookingStatusChangeApproved3(id);
-
-		}
-
 		public void TDelete(Booking t)
 		{
 			_bookingDal.Delete(t);
@@ -52,7 +36,6 @@ namespace HotelProject.BusinessLayer.Concrete
 		public List<Booking> TGetLast6Bookings()
 		{
 			return _bookingDal.GetLast6Bookings();
-
 		}
 
 		public List<Booking> TGetList()
@@ -68,6 +51,26 @@ namespace HotelProject.BusinessLayer.Concrete
 		public void TUpdate(Booking t)
 		{
 			_bookingDal.Update(t);
+		}
+
+		public void TMarkBookingStatusAsApproved(int id)
+		{
+			_bookingDal.MarkBookingStatusAsApproved(id);
+		}
+
+		public void TMarkBookingStatusAsCancelled(int id)
+		{
+			_bookingDal.MarkBookingStatusAsCancelled(id);
+		}
+
+		public void TMarkBookingStatusAsPending(int id)
+		{
+			_bookingDal.MarkBookingStatusAsPending(id);
+		}
+
+		public void TMarkBookingStatusAsCallCustomer(int id)
+		{
+			_bookingDal.MarkBookingStatusAsCallCustomer(id);
 		}
 	}
 }
