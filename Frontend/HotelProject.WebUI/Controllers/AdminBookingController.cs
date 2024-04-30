@@ -32,6 +32,21 @@ namespace HotelProject.WebUI.Controllers
 			return View();
 		}
 
+		public async Task<IActionResult> ApprovedReservation2(int id)
+		{
+			var client = _httpClientFactory.CreateClient();
+			var responseMessage = await client.GetAsync($"http://localhost:11888/api/Booking/BookingApproved/?id={id}");
+			if (responseMessage.IsSuccessStatusCode)
+			{
+				return RedirectToAction("Index");
+			}
+			return View();
+		}
+
+
+
+
+
 		public async Task<IActionResult> ApprovedReservation(ApprovedReservationDto approvedReservationDto)
 		{
 			var client = _httpClientFactory.CreateClient();
