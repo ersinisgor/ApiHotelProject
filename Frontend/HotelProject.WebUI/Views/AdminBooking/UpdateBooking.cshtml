@@ -1,0 +1,52 @@
+﻿@model HotelProject.WebUI.Dtos.BookingDto.UpdateBookingDto
+@{
+    ViewData["Title"] = "UpdateBooking";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<h1>Update Booking</h1>
+
+<form method="post">
+  <input type="hidden" asp-for="BookingID" />
+  <label>Guest Name</label>
+  <input type="text" asp-for="Name" class="form-control" />
+  <br />
+  <label>Guest Email</label>
+  <input type="email" asp-for="Mail" class="form-control" />
+  <br />
+  <label>Check In</label>
+  <input type="date" asp-for="CheckIn" class="form-control" />
+  <br />
+  <label>Check Out</label>
+  <input type="date" asp-for="CheckOut" class="form-control" />
+  <br />
+  <label>Adult Count</label>
+  <input type="number" asp-for="AdultCount" class="form-control" />
+  <br />
+  <label>Child Count</label>
+  <input type="number" asp-for="ChildCount" class="form-control" />
+  <br />
+  <label>Room Count</label>
+  <input type="number" asp-for="RoomCount" class="form-control" />
+  <br />
+  <label>City</label>
+  <input type="text" asp-for="City" class="form-control" />
+  <br />
+  <label>Country</label>
+  <input type="text" asp-for="Country" class="form-control" />
+  <br />
+  <label>Status</label>
+  <input type="text" asp-for="Status" class="form-control" />
+  <br />
+  <label>Special Requests</label>
+  <textarea type="text" asp-for="SpecialRequest" rows="5" class="form-control"></textarea>
+  <br />
+  <label>Description</label>
+  <textarea type="text" asp-for="Description" rows="5" class="form-control"></textarea>
+  <br />
+
+
+  <button class="btn btn-primary">Update Booking</button>
+</form>
+
+
