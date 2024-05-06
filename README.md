@@ -60,3 +60,5 @@ The application interacts with the following tables in the database:
 - Fluent Validation ensures that input data is validated before processing.
 - AutoMapper simplifies the mapping between DTOs and entity models.
 - View Component is used for rendering reusable UI components, improving code maintainability.
+
+

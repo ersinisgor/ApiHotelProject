@@ -92,9 +92,11 @@
 				</a>
 			</li>
 			<li>
-				<a href="/WorkLocation/Index/" aria-expanded="false">
-					<i class="icon-close menu-icon"></i><span class="nav-text">Log Out</span>
-				</a>
+				<form action="/Login/Logout" method="post" id="logoutForm">
+					<a href="javascript:void(0);" onclick="document.getElementById('logoutForm').submit();">
+						<i class="icon-close menu-icon"></i><span class="nav-text">Log Out</span>
+					</a>
+				</form>
 			</li>
 		</ul>
 	</div>

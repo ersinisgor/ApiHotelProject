@@ -33,7 +33,7 @@ namespace HotelProject.WebUI.Controllers
 				var result = await _signInManager.PasswordSignInAsync(loginUserDto.UserName, loginUserDto.Password, false, false);
 				if (result.Succeeded)
 				{
-					return RedirectToAction("Index", "Staff");
+					return RedirectToAction("Index", "Dashboard");
 				}
 				else
 				{
@@ -42,6 +42,13 @@ namespace HotelProject.WebUI.Controllers
 			}
 
 			return View();
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> Logout()
+		{
+			await _signInManager.SignOutAsync();
+			return RedirectToAction("Index", "Login");
 		}
 	}
 }
