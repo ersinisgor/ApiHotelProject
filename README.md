@@ -50,6 +50,8 @@ The application interacts with the following tables in the database:
 - **SMTP**: Used for sending emails.
 - **File Upload**: Supports uploading photos and files.
 - **View Component**: Used for rendering reusable UI components.
+- **JWT**: For token-based authentication and authorization.
+- **Bootstrap 5**: For front-end styling and layout.
 
 ## Development Notes
 
@@ -60,5 +62,3 @@ The application interacts with the following tables in the database:
 - Fluent Validation ensures that input data is validated before processing.
 - AutoMapper simplifies the mapping between DTOs and entity models.
 - View Component is used for rendering reusable UI components, improving code maintainability.
-
-
